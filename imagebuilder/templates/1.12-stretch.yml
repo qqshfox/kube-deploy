@@ -113,7 +113,11 @@ packages:
 {{ end }}
 
 plugins:
-{{ if eq .Cloud "gce" }}
+{{ if eq .Cloud "aws" }}
+  ntp:
+    servers:
+    - 169.254.169.123
+{{ else if eq .Cloud "gce" }}
   ntp:
     servers:
     - metadata.google.internal
